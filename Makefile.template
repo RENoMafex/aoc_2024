@@ -7,7 +7,7 @@ DIR = .
 SRCS = $(wildcard $(DIR)/*.cpp) $(wildcard $(DIR)/*.cc) $(wildcard $(DIR)/*.cxx) $(wildcard $(DIR)/*.C) \
 	$(wildcard $(DIR)/*.h) $(wildcard $(DIR)/*.hpp) $(wildcard $(DIR)/*.hh) $(wildcard $(DIR)/*.H)
 TARGET = main
-all: $(TARGET)
+all: run
 $(TARGET): $(SRCS)
 	@echo "Compiling $@ from sources: $^"
 	@$(CXX) $(CXXFLAGS) -o $@ $^
