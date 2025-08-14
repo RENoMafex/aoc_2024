@@ -1,0 +1,16 @@
+CXX ?= g++
+CXXFLAGS = $(WARNINGS) -std=$(STANDARD) -O2
+STANDARD = c++23
+WARNINGS = -Wall -Wextra -Wdeprecated -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2
+DIR = .
+.PHONY: all run
+SRCS = $(wildcard $(DIR)/*.cpp) $(wildcard $(DIR)/*.cc) $(wildcard $(DIR)/*.cxx) $(wildcard $(DIR)/*.C) \
+	$(wildcard $(DIR)/*.h) $(wildcard $(DIR)/*.hpp) $(wildcard $(DIR)/*.hh) $(wildcard $(DIR)/*.H)
+TARGET = main
+all: $(TARGET)
+$(TARGET): $(SRCS)
+	@echo "Compiling $@ from sources: $^"
+	@$(CXX) $(CXXFLAGS) -o $@ $^
+run: $(TARGET)
+	@echo "Running $<"
+	@./$<
