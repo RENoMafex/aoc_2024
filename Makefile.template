@@ -1,5 +1,5 @@
 CXX ?= g++
-CXXFLAGS = $(WARNINGS) -std=$(STANDARD) -O2
+CXXFLAGS = $(WARNINGS) -std=$(STANDARD) -Og -g
 STANDARD = c++23
 WARNINGS = -Wall -Wextra -Wdeprecated -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2
 DIR = .
