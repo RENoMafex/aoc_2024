@@ -15,33 +15,33 @@ int main() {
 	while (std::getline(infile, line)) {
 		// put the numbers into the num_line vector
 		std::vector<uint16_t> num_line = {};
-		size_t space = 0, oldspace = 0;
+		size_t space = 0, old_space = 0;
 		while (true) {
-			oldspace = space;
+			old_space = space;
 			space = line.find(' ', space);
-			if (!line.substr(oldspace, space - oldspace).empty()) {num_line.push_back(std::stoi(line.substr(oldspace, space - oldspace)));}
+			if (!line.substr(old_space, space - old_space).empty()) {num_line.push_back(std::stoi(line.substr(old_space, space - old_space)));}
 			if (space == std::string::npos) {break;}
 			space++;
 		}
 		// code from here should process each line.
-		bool flag = false;
+		bool break_flag = false;
 		if (num_line.at(0) < num_line.at(1)) { // numbers are rising
 			for (size_t i = 0; i < num_line.size() - 1; i++) {
-				flag = (num_line.at(i+1) - num_line.at(i) <= 3 && num_line.at(i+1) - num_line.at(i) > 0) ? false : true;
-				if (flag) {break;}
+				break_flag = (num_line.at(i+1) - num_line.at(i) <= 3 && num_line.at(i+1) - num_line.at(i) > 0) ? false : true;
+				if (break_flag) {break;}
 			}
 			auto sorted = num_line;
 			std::sort(sorted.begin(), sorted.end());
-			if (!flag && sorted == num_line) safe++;
+			if (!break_flag && sorted == num_line) safe++;
 		} else
 		if (num_line.at(0) > num_line.at(1)) { // numbers are falling
 			for (size_t i = 0; i < num_line.size() - 1; i++) {
-				flag = (num_line.at(i) - num_line.at(i+1) <= 3 && num_line.at(i) - num_line.at(i+1) > 0) ? false : true;
-				if (flag) {break;}
+				break_flag = (num_line.at(i) - num_line.at(i+1) <= 3 && num_line.at(i) - num_line.at(i+1) > 0) ? false : true;
+				if (break_flag) {break;}
 			}
 			auto sorted = num_line;
 			std::sort(sorted.begin(), sorted.end(), std::greater<int>());
-			if (!flag && sorted == num_line) safe++;
+			if (!break_flag && sorted == num_line) safe++;
 		}
 	}
 
